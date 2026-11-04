@@ -46,6 +46,16 @@
   if(details){
     var params=new URLSearchParams(window.location.search);
     var estimate=params.get('estimate');
-    if(estimate){details.value='I would like to discuss this online estimate:\n\n'+estimate.slice(0,1000)+'\n\nMy business and project requirements:\n';}
+    if(estimate){
+      details.value='I would like to discuss this online estimate:\n\n'+estimate.slice(0,1000)+'\n\nMy business and project requirements:\n';
+      var websiteType=document.getElementById('website-type');
+      if(websiteType){
+        var selectedType=estimate.startsWith('Website type: Multi-page')?'Multi-page website':
+          estimate.startsWith('Website type: One-page')?'One-page website':null;
+        if(selectedType&&Array.from(websiteType.options).some(function(option){return option.value===selectedType;})){
+          websiteType.value=selectedType;
+        }
+      }
+    }
   }
 })();
