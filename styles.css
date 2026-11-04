@@ -5,3 +5,29 @@
 @media(max-width:760px){.container{width:min(100% - 34px,1140px)}.topline{font-size:.7rem}.navrow{min-height:69px}.navlinks{display:none}.mobile-menu{display:block;position:relative}.mobile-menu summary{list-style:none;cursor:pointer;border:1px solid #ccdaee;border-radius:10px;padding:8px 13px;font-weight:800}.mobile-menu summary::-webkit-details-marker{display:none}.mobile-items{position:absolute;right:0;top:47px;background:#fff;border:1px solid #d5e2f2;border-radius:14px;box-shadow:var(--shadow);padding:13px;display:flex;flex-direction:column;gap:7px;min-width:200px}.mobile-items a{padding:8px;text-decoration:none;font-weight:700}.hero-inner,.split,.contact-layout{grid-template-columns:1fr}.hero-inner{padding:69px 0 75px}.hero h1{font-size:clamp(2.55rem,10vw,3.7rem)}.preview{max-width:480px;margin:auto}.cards,.process,.feature-band{grid-template-columns:1fr}.section{padding:62px 0}.demo-grid{grid-template-columns:1fr}.cta-row{flex-direction:column;align-items:flex-start}.footer-cols{grid-template-columns:1fr 1fr;gap:25px}.footer-cols>div:first-child{grid-column:1/-1}.page-intro{padding:56px 0}}
 @media(max-width:440px){.brand{font-size:1.05rem}.brandmark{width:32px;height:32px}.footer-cols{grid-template-columns:1fr}.footer-cols>div:first-child{grid-column:auto}.card{padding:25px}.hero-actions .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+
+/* Interactive website pricing calculator */
+.estimator-layout{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(310px,.85fr);gap:26px;align-items:start}
+.pricing-form{padding:35px!important}.pricing-form h2{font-size:clamp(1.6rem,2.8vw,2.1rem);margin:8px 0 13px}.pricing-form .field{margin:24px 0}
+.pricing-form label:not(.checkbox-line){font-weight:750;display:block;margin-bottom:9px}
+.pricing-form select,.pricing-form input[type=number]{width:100%;background:#fff;border:1px solid #b7c7de;border-radius:10px;min-height:48px;padding:12px 13px;font:inherit;color:#10213b}
+.pricing-form select:focus-visible,.pricing-form input:focus-visible{outline:3px solid #94c5ff;outline-offset:2px}
+.pricing-form small{display:block;color:#53677f;font-size:.85rem;margin-top:6px}
+.pricing-form fieldset{border:0;padding:0;margin:25px 0}.pricing-form legend{font-weight:750;padding:0 0 10px}
+.checkbox-group{display:grid;gap:11px}
+.checkbox-line{display:flex;align-items:start;gap:13px;cursor:pointer;border:1px solid #dde7f4;border-radius:12px;background:#f6f9ff;padding:14px}
+.checkbox-line:hover{background:#eaf3ff}.checkbox-line input{accent-color:#2563eb;margin:7px 0 0;flex:0 0 auto;width:18px;height:18px}
+.checkbox-line span{display:block}.checkbox-line strong{font-weight:750}.checkbox-line small{line-height:1.4;margin:4px 0 0}
+.price-disclaimer{font-size:.83rem;color:#455f7f;line-height:1.6;background:#f2f6fc;border-left:4px solid #2765d9;padding:14px 17px;border-radius:0 9px 9px 0}
+.estimate-card{position:sticky;top:112px;padding:34px;background:linear-gradient(145deg,#08172f,#173c74);color:#fff;border:1px solid #3568ac;border-radius:20px;box-shadow:0 20px 55px rgba(8,23,47,.2)}
+.estimate-card .eyebrow{color:#93c5ff}.estimate-card .estimate-caption{color:#bfd2eb;margin:4px 0 12px}
+.estimate-total{font-size:clamp(2.7rem,4vw,4rem);font-weight:900;letter-spacing:-.04em;line-height:1.1;margin:4px 0 12px}
+.estimate-card hr{border:0;border-top:1px solid #ffffff40;margin:24px 0}
+.estimate-card h3{color:#fff;margin:0 0 12px}.estimate-breakdown{list-style:none;padding:0;margin:0}
+.estimate-breakdown li{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid #ffffff2c;font-size:.9rem}.estimate-breakdown li span{flex:1}.estimate-breakdown strong{white-space:nowrap}
+.estimate-monthly{color:#b8d5fc;margin:15px 0}.estimate-footnote{color:#cadbf1;font-size:.8rem;line-height:1.55;margin:13px 0 0}
+.estimate-card .btn{width:100%;display:flex;justify-content:center}
+.pricing-faq{max-width:850px;margin:auto}.pricing-faq details{border:1px solid #d7e2f0;border-radius:12px;background:#fff;padding:19px 23px;margin:12px 0}.pricing-faq summary{cursor:pointer;font-weight:750}.pricing-faq details p{color:#52647d;margin:14px 0 0}
+.estimator-layout [hidden]{display:none!important}
+@media(max-width:850px){.estimator-layout{grid-template-columns:1fr}.estimate-card{position:static}.pricing-form{padding:25px!important}}
