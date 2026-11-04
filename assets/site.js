@@ -58,23 +58,17 @@
       }
     }
   }
-  /* Email-client fallback when the external form provider is unavailable.
-     This does not send mail automatically: the customer must press Send. */
+  /* Draft handoff options. Neither automatically sends an email. */
   var quoteForm=document.querySelector('.contact-form');
   var emailFallback=document.getElementById('email-quote-fallback');
-  if(quoteForm&&emailFallback){
-    emailFallback.addEventListener('click',function(event){
-      if(!quoteForm.reportValidity()){
-        event.preventDefault();
-        return;
-      }
+  var gmailFallback=document.getElementById('gmail-quote-fallback');
+  if(quoteForm){
+    function draftBody(limit){
       var info=new FormData(quoteForm);
-      var cleaned=function(name){
-        return String(info.get(name)||'').trim();
-      };
+      var cleaned=function(name){return String(info.get(name)||'').trim();};
       var project=cleaned('project_details');
-      var abbreviated=project.length>1900;
-      var lines=[
+      var shortened=project.length>limit;
+      return [
         'Nexora Digital - Website Quote Request',
         '',
         'Name: '+cleaned('name'),
@@ -84,11 +78,21 @@
         'Website type: '+cleaned('website_type'),
         '',
         'Project details:',
-        abbreviated?project.slice(0,1900)+'\n[Additional details omitted due to email-link length. Please add them before sending.]':project
-      ];
-      var subject=encodeURIComponent('Nexora Digital - Website Quote Request');
-      var body=encodeURIComponent(lines.join('\n'));
-      emailFallback.href='mailto:ahmadkerami143@gmail.com?subject='+subject+'&body='+body;
-    });
+        shortened?project.slice(0,limit)+'\n[Additional details omitted due to email-link length. Please add them before sending.]':project
+      ].join('\n');
+    }
+    var subject=encodeURIComponent('Nexora Digital - Website Quote Request');
+    if(emailFallback){
+      emailFallback.addEventListener('click',function(event){
+        if(!quoteForm.reportValidity()){event.preventDefault();return;}
+        emailFallback.href='mailto:ahmadkerami143@gmail.com?subject='+subject+'&body='+encodeURIComponent(draftBody(1900));
+      });
+    }
+    if(gmailFallback){
+      gmailFallback.addEventListener('click',function(event){
+        if(!quoteForm.reportValidity()){event.preventDefault();return;}
+        gmailFallback.href='https://mail.google.com/mail/?view=cm&fs=1&to=ahmadkerami143%40gmail.com&su='+subject+'&body='+encodeURIComponent(draftBody(1300));
+      });
+    }
   }
 })();
