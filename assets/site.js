@@ -66,7 +66,7 @@
     function draftBody(limit){
       var info=new FormData(quoteForm);
       var cleaned=function(name){return String(info.get(name)||'').trim();};
-      var project=cleaned('project_details');
+      var project=cleaned('message');
       var shortened=project.length>limit;
       return [
         'Nexora Digital - Website Quote Request',
