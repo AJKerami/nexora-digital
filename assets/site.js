@@ -42,7 +42,7 @@
     }
     form.addEventListener('input',calculate);form.addEventListener('change',calculate);calculate();
   }
-  var details=document.getElementById('project-details');
+  var details=(document.getElementById('project-details')||document.getElementById('details'));
   if(details){
     var params=new URLSearchParams(window.location.search);
     var estimate=params.get('estimate');
