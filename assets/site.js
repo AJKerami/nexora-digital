@@ -58,4 +58,37 @@
       }
     }
   }
+  /* Email-client fallback when the external form provider is unavailable.
+     This does not send mail automatically: the customer must press Send. */
+  var quoteForm=document.querySelector('.contact-form');
+  var emailFallback=document.getElementById('email-quote-fallback');
+  if(quoteForm&&emailFallback){
+    emailFallback.addEventListener('click',function(event){
+      if(!quoteForm.reportValidity()){
+        event.preventDefault();
+        return;
+      }
+      var info=new FormData(quoteForm);
+      var cleaned=function(name){
+        return String(info.get(name)||'').trim();
+      };
+      var project=cleaned('project_details');
+      var abbreviated=project.length>1900;
+      var lines=[
+        'Nexora Digital - Website Quote Request',
+        '',
+        'Name: '+cleaned('name'),
+        'Email: '+cleaned('email'),
+        'Phone: '+(cleaned('phone')||'Not provided'),
+        'Business: '+(cleaned('business')||'Not provided'),
+        'Website type: '+cleaned('website_type'),
+        '',
+        'Project details:',
+        abbreviated?project.slice(0,1900)+'\n[Additional details omitted due to email-link length. Please add them before sending.]':project
+      ];
+      var subject=encodeURIComponent('Nexora Digital - Website Quote Request');
+      var body=encodeURIComponent(lines.join('\n'));
+      emailFallback.href='mailto:ahmadkerami143@gmail.com?subject='+subject+'&body='+body;
+    });
+  }
 })();
