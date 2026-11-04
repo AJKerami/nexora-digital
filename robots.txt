@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ajkerami.github.io/nexora-digital/sitemap.xml
