@@ -31,3 +31,5 @@
 .pricing-faq{max-width:850px;margin:auto}.pricing-faq details{border:1px solid #d7e2f0;border-radius:12px;background:#fff;padding:19px 23px;margin:12px 0}.pricing-faq summary{cursor:pointer;font-weight:750}.pricing-faq details p{color:#52647d;margin:14px 0 0}
 .estimator-layout [hidden]{display:none!important}
 @media(max-width:850px){.estimator-layout{grid-template-columns:1fr}.estimate-card{position:static}.pricing-form{padding:25px!important}}
+
+.demo-visual.cleaning{background:linear-gradient(130deg,#183e38,#478971)}.demo-visual.cafe{background:linear-gradient(130deg,#38241c,#b56b4c)}
