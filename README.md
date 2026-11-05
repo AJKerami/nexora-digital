@@ -1,11 +1,17 @@
 # YUSRA Digital Solutions
 
-Professional Websites. Creative Digital Solutions.
+**Professional Websites. Creative Digital Solutions.**
 
-Responsive website design for small businesses in Bowmanville, Durham Region, Toronto and across Ontario.
+Modern, responsive websites for small businesses in Bowmanville, Durham Region, Toronto, and Ontario.
 
-Current GitHub Pages project: https://ajkerami.github.io/nexora-digital/
+**Public website:** https://www.yusradigitalsolutions.ca/
 
-Registered custom domain: `yusradigitalsolutions.ca` — **not yet connected to GitHub Pages**. Coordinate registrar DNS changes and GitHub Pages custom domain settings before updating canonical URLs or adding CNAME.
+**GitHub Pages source:** [AJKerami/nexora-digital](https://github.com/AJKerami/nexora-digital)
 
-Existing pages, demo concepts, pricing calculator, contact forms and privacy policy remain intact. Contact forms use Formspree endpoint `xyeeondw` and email draft fallback.
+The GitHub repository retains its historical project name for continuity; **YUSRA Digital Solutions** is the public-facing brand. The site's custom domain is configured in GitHub Pages using the root `CNAME` file. DNS records are managed at Register.ca; HTTPS activation is checked separately in GitHub Pages Settings.
+
+This project includes seven main pages, four clearly labeled demo concepts, a JavaScript website pricing calculator, and a Formspree quote-request form using endpoint `xyeeondw` with Gmail and mailto draft fallbacks.
+
+Search configuration: the seven page canonical URLs, Open Graph URLs, home-page structured data, `robots.txt`, and `sitemap.xml` reference the YUSRA custom domain. After HTTPS is active, verify the domain in Google Search Console and submit `https://www.yusradigitalsolutions.ca/sitemap.xml`.
+
+No production form submission or customer email delivery is implied by a successful GitHub Pages deployment.
