@@ -1,4 +1,4 @@
-/* Nexora Digital — navigation, calculator and estimate handoff */
+/* YUSRA Digital Solutions — navigation, calculator and estimate handoff */
 (function(){
   var navButton=document.querySelector('.nav-toggle');
   var nav=document.querySelector('.nav-links');
@@ -69,7 +69,7 @@
       var project=cleaned('message');
       var shortened=project.length>limit;
       return [
-        'Nexora Digital - Website Quote Request',
+        'YUSRA Digital Solutions - Website Quote Request',
         '',
         'Name: '+cleaned('name'),
         'Email: '+cleaned('email'),
@@ -81,7 +81,7 @@
         shortened?project.slice(0,limit)+'\n[Additional details omitted due to email-link length. Please add them before sending.]':project
       ].join('\n');
     }
-    var subject=encodeURIComponent('Nexora Digital - Website Quote Request');
+    var subject=encodeURIComponent('YUSRA Digital Solutions - Website Quote Request');
     if(emailFallback){
       emailFallback.addEventListener('click',function(event){
         if(!quoteForm.reportValidity()){event.preventDefault();return;}
