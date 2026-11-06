@@ -1,0 +1,95 @@
+/* YUSRA — Version 18: restrained, consistent editorial typography. */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{
+  --ys-ink:#123b31;
+  --ys-text:#365f53;
+  --ys-green:#075f4c;
+  --ys-green-strong:#034e3e;
+  --ys-mint:#c6f8df;
+  --ys-offwhite:#f8fff9;
+  --ys-font:'Manrope','Segoe UI',Arial,sans-serif;
+  --ys-italic:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --ys-soft-depth:0 5px 17px rgba(7,59,46,.105);
+  --ys-dark-depth:0 5px 17px rgba(0,26,21,.21);
+}
+html{font-synthesis:weight; -webkit-text-size-adjust:100%; text-size-adjust:100%}
+body,button,input,select,textarea,a,.btn,.button,.cta,.nav a,.site-navigation a,.brand{font-family:var(--ys-font)!important;}
+body{color:var(--ys-ink);font-size:16px;line-height:1.72;font-weight:400;letter-spacing:-.008em;-webkit-font-smoothing:antialiased}
+/* One sans-serif for every functional element, only selected words italic. */
+h1,h2,h3,h4,h5,h6,.card h3,.service-card h3,.project-tile strong,.work strong,.estimate strong,.brand{
+  font-family:var(--ys-font)!important;font-style:normal;font-synthesis:weight;
+  font-kerning:normal;letter-spacing:-.033em;
+}
+h1{font-weight:800!important;line-height:1.13!important;letter-spacing:-.048em!important;text-wrap:balance}
+h2{font-weight:750!important;line-height:1.2!important;letter-spacing:-.036em!important;text-wrap:balance}
+h3,.card h3,.service-card h3,.work strong,.project-tile strong{font-weight:700!important;line-height:1.28;letter-spacing:-.025em!important}
+/* Prevent dark / black text from feeling harsh on mint panels. */
+.intro h1,.section-title h2,.section-heading h2,.portfolio-layout h2,.section.mint h2,.section.pale h2,
+.card h3,.service-card h3,.panel h3,.work strong,.project-tile:not(.dark) strong{color:var(--ys-ink)!important}
+/* Crisp white on dark emerald backgrounds, with just enough depth. */
+.network-hero h1,.emerald-copy h2,.final-cta h2,.section.dark h2,.dark-band h2{color:var(--ys-offwhite)!important}
+.network-hero h1,.emerald-copy h2,.final-cta h2,.section.dark h2,.dark-band h2{
+  text-shadow:var(--ys-dark-depth)!important;
+}
+/* Shadow is limited to prominent headings; no bevel, outlines or 3D extrusion. */
+.intro h1,.section-title h2,.section-heading h2,.portfolio-layout h2,.section.mint h2,.section.pale h2{
+  text-shadow:var(--ys-soft-depth)!important;
+}
+.project-tile.dark strong,.section.dark h3,.section.dark .step h3{color:#f8fff9!important;text-shadow:none!important}
+/* Elegant italic words: a deliberate accent, not an entire italic website. */
+h1 .v13-headline-accent,h1 .editorial-accent,h2 .editorial-accent,
+.editorial-accent,.editorial-copy em{
+  font-family:var(--ys-italic)!important;font-style:italic!important;font-weight:400!important;
+  font-synthesis:none;letter-spacing:-.014em!important;line-height:1.02;
+  text-decoration:none!important;box-shadow:none!important;
+  text-shadow:0 3px 11px rgba(6,79,61,.13)!important;
+}
+.intro h1 .v13-headline-accent,.intro h1 .editorial-accent,
+.section-title h2 .editorial-accent,.section-heading h2 .editorial-accent,
+.portfolio-layout h2 .editorial-accent,.section.mint h2 .editorial-accent,.section.pale h2 .editorial-accent{
+  color:var(--ys-green)!important;
+}
+.network-hero h1 .v13-headline-accent,.network-hero h1 .editorial-accent,
+.emerald-copy h2 .editorial-accent,.section.dark h2 .editorial-accent,
+.final-cta h2 .editorial-accent,.dark-band h2 .editorial-accent{
+  color:var(--ys-mint)!important;text-shadow:0 4px 14px rgba(0,26,20,.20)!important;
+}
+h1 .v13-headline-accent::after{display:none!important}
+/* Unify giant headline treatment and keep decorative type readable. */
+h1 .v13-headline-lead,h1 .v13-headline-flow{font-family:var(--ys-font)!important;font-weight:800!important;letter-spacing:-.046em!important;line-height:1.14!important}
+h1 .v13-headline-flow{font-weight:500!important}
+.intro h1{font-size:clamp(2.65rem,4.9vw,4.75rem);max-width:610px;line-height:1.12!important}
+.network-hero h1{font-size:clamp(2.6rem,4.8vw,4.65rem);max-width:850px}
+.section-title h2,.section-heading h2,.emerald-copy h2,.portfolio-layout h2,.final-cta h2,.contact-layout h2{line-height:1.17!important}
+/* Descriptions, metadata, nav, prices and labels remain shadow-free. */
+p,li,small,label,input,textarea,select,summary,.nav a,.site-navigation a,.price,.service-price,
+.card .price,.estimate strong,.brand,.eyebrow,.v13-kicker,.service-tag,.disclaimer,.form-note,.status,.note{
+  text-shadow:none!important;
+}
+.section:not(.dark) p,.card p,.panel p,.work p,.section-title p,.section-heading p,.intro p,.service-card p{
+  color:var(--ys-text)!important;
+}
+.network-hero p,.section.dark p,.dark-band p,.emerald-copy p,.final-cta p{color:#e5f8ef!important}
+.section-title p,.section-heading p,.intro p,.network-hero p{line-height:1.72;letter-spacing:-.005em}
+.eyebrow,.v13-kicker,.service-tag{
+  font-family:var(--ys-font)!important;letter-spacing:.145em!important;font-weight:800!important;
+}
+.brand{font-weight:800!important;letter-spacing:.06em!important}
+.nav a,.site-navigation a{font-weight:650!important;letter-spacing:0!important}
+.button,.btn,.cta,.action{font-weight:750!important;letter-spacing:0!important;text-shadow:none!important}
+.card .price,.service-card .service-price,.estimate strong{color:var(--ys-green-strong)!important;font-variant-numeric:tabular-nums}
+.form-note,.note,.status{font-size:.87rem}
+.section-title h2::after,.section-heading h2::after{
+  width:43px!important;height:2px!important;background:linear-gradient(90deg,#0b9276,#b4f0d5)!important
+}
+@media (max-width:780px){
+  .intro h1,.network-hero h1{font-size:clamp(2.4rem,7.8vw,3.45rem)!important;letter-spacing:-.038em!important}
+  h1 .v13-headline-lead,h1 .v13-headline-flow{letter-spacing:-.038em!important}
+  .section-title h2,.section-heading h2,.emerald-copy h2,.portfolio-layout h2,.contact-layout h2{line-height:1.2!important}
+}
+@media (max-width:440px){
+  .intro h1,.network-hero h1{font-size:clamp(2.3rem,9vw,2.9rem)!important;line-height:1.13!important;overflow-wrap:break-word}
+  .section-title h2,.section-heading h2,.emerald-copy h2,.portfolio-layout h2,.contact-layout h2{font-size:clamp(1.95rem,7.1vw,2.5rem)!important;letter-spacing:-.031em!important}
+  .eyebrow,.v13-kicker{letter-spacing:.11em!important}
+}
+@media(prefers-reduced-motion:reduce){h1 .v13-headline-accent,.editorial-accent{animation:none!important}}
