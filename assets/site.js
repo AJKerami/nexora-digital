@@ -85,13 +85,13 @@
     if(emailFallback){
       emailFallback.addEventListener('click',function(event){
         if(!quoteForm.reportValidity()){event.preventDefault();return;}
-        emailFallback.href='mailto:ahmadkerami143@gmail.com?subject='+subject+'&body='+encodeURIComponent(draftBody(1900));
+        emailFallback.href='mailto:info@yusradigitalsolutions.ca?subject='+subject+'&body='+encodeURIComponent(draftBody(1900));
       });
     }
     if(gmailFallback){
       gmailFallback.addEventListener('click',function(event){
         if(!quoteForm.reportValidity()){event.preventDefault();return;}
-        gmailFallback.href='https://mail.google.com/mail/?view=cm&fs=1&to=ahmadkerami143%40gmail.com&su='+subject+'&body='+encodeURIComponent(draftBody(1300));
+        gmailFallback.href='https://mail.google.com/mail/?view=cm&fs=1&to=info%40yusradigitalsolutions.ca&su='+subject+'&body='+encodeURIComponent(draftBody(1300));
       });
     }
   }
