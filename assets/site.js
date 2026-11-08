@@ -50,8 +50,8 @@
       details.value='I would like to discuss this online estimate:\n\n'+estimate.slice(0,1000)+'\n\nMy business and project requirements:\n';
       var websiteType=document.getElementById('website-type');
       if(websiteType){
-        var selectedType=estimate.startsWith('Website type: Multi-page')?'Multi-page website':
-          estimate.startsWith('Website type: One-page')?'One-page website':null;
+        var selectedType=(estimate.startsWith('Multi-page site;') || estimate.startsWith('Website type: Multi-page'))?'multi-page':
+          (estimate.startsWith('One-page site;') || estimate.startsWith('Website type: One-page'))?'one-page':null;
         if(selectedType&&Array.from(websiteType.options).some(function(option){return option.value===selectedType;})){
           websiteType.value=selectedType;
         }
