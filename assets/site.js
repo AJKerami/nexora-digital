@@ -95,4 +95,38 @@
       });
     }
   }
+  /* Preserve Formspree delivery and show a branded confirmation after a verified success. */
+  if(quoteForm && quoteForm.action.indexOf('formspree.io/')!==-1){
+    quoteForm.addEventListener('submit',async function(event){
+      if(!quoteForm.reportValidity())return;
+      event.preventDefault();
+      var submit=quoteForm.querySelector('button[type="submit"]');
+      var status=document.getElementById('quote-form-status');
+      if(!status){
+        status=document.createElement('p');
+        status.id='quote-form-status';
+        status.setAttribute('role','status');
+        status.setAttribute('aria-live','polite');
+        submit.insertAdjacentElement('afterend',status);
+      }
+      var previous=submit.textContent;
+      submit.disabled=true;
+      submit.textContent='Sending your request…';
+      status.textContent='';
+      try{
+        var result=await fetch(quoteForm.action,{
+          method:'POST',
+          body:new FormData(quoteForm),
+          headers:{'Accept':'application/json'}
+        });
+        if(!result.ok)throw new Error('Submission not accepted');
+        window.location.assign('thank-you.html');
+      }catch(error){
+        status.textContent='We could not confirm delivery. Please try again or use Email Instead.';
+        submit.disabled=false;
+        submit.textContent=previous;
+      }
+    });
+  }
+
 })();
