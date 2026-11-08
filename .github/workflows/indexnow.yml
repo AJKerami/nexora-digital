@@ -1,0 +1,91 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - '.github/workflows/indexnow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-submission
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Allow GitHub Pages to publish
+        run: sleep 90
+      - name: Submit sitemap URLs to IndexNow
+        run: |
+          python3 - <<'PY'
+          import json
+          import time
+          import urllib.error
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from urllib.parse import urlparse
+
+          host = "www.yusradigitalsolutions.ca"
+          base = f"https://{host}"
+          key = "bdb31ea5306f2f05bd6b8544fbcfed94"
+          key_location = f"{base}/{key}.txt"
+
+          with urllib.request.urlopen(key_location, timeout=25) as response:
+              published_key = response.read().decode("utf-8").strip()
+          if published_key != key:
+              raise SystemExit("IndexNow verification key is not publicly accessible or does not match.")
+
+          with urllib.request.urlopen(f"{base}/sitemap.xml", timeout=25) as response:
+              sitemap = response.read()
+          root = ET.fromstring(sitemap)
+          ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [
+              loc.text.strip()
+              for loc in root.findall(".//sm:loc", ns)
+              if loc.text and urlparse(loc.text.strip()).netloc == host
+              and urlparse(loc.text.strip()).scheme == "https"
+          ]
+          urls = list(dict.fromkeys(urls))
+          if not urls:
+              raise SystemExit("No same-host HTTPS URLs found in published sitemap.")
+          if len(urls) > 10000:
+              raise SystemExit("Sitemap exceeds IndexNow's maximum of 10,000 URLs per request.")
+
+          payload = {
+              "host": host,
+              "key": key,
+              "keyLocation": key_location,
+              "urlList": urls,
+          }
+          request = urllib.request.Request(
+              "https://api.indexnow.org/IndexNow",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+          for attempt in range(3):
+              try:
+                  with urllib.request.urlopen(request, timeout=40) as response:
+                      status = response.status
+                  if status in (200, 202):
+                      print(f"IndexNow accepted {len(urls)} URLs (HTTP {status}).")
+                      break
+                  raise RuntimeError(f"Unexpected HTTP {status}")
+              except urllib.error.HTTPError as exc:
+                  if exc.code == 202:
+                      print(f"IndexNow received {len(urls)} URLs (HTTP 202; key validation pending).")
+                      break
+                  if exc.code not in (429, 500, 502, 503, 504) or attempt == 2:
+                      raise
+                  time.sleep(20 * (attempt + 1))
+          PY
